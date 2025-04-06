@@ -214,21 +214,17 @@ void configCallback(Config config, uint32_t a, uint32_t b)
       if (a) {
         Navigation nav = watch.getNavigation();
         Serial.println(nav.directions);
-       
         Serial.println(nav.eta);
-        
         Serial.println(nav.duration);
         Serial.println(nav.distance);
         Serial.println(nav.title);
       } 
       break;
     case CF_NAV_ICON:
+      direct = convertImage(b);
       Serial.print("Navigation Icon data, position: ");
       Serial.println(a);
       Serial.print("Icon CRC: ");
-      direct = convertImage(b);
-     
-
       Serial.printf("0x%04X\n", b);
       break;
   }
